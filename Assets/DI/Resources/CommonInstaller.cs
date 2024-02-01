@@ -5,6 +5,7 @@ using Arch.Signals;
 using Arch.SoundManager;
 using HighLow.Scripts.Controllers.CardPriority;
 using HighLow.Scripts.Controllers.GameLogic;
+using HighLow.Scripts.Controllers.Gameplay;
 using HighLow.Scripts.Views.Installers;
 using Zenject;
 
@@ -24,10 +25,13 @@ namespace DI.Resources
             
             CardPriorityInstaller.Install(Container);
             GameLogicInstaller.Install(Container);
+            GameplayInstaller.Install(Container);
             GameplayPanelInstaller.Install(Container);
             CardHandInstaller.Install(Container);
             CardInstaller.Install(Container);
-            
+
+
+
         }
     }
 }

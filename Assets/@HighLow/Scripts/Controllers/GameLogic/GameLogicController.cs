@@ -1,10 +1,7 @@
 using System;
-using Arch.InteractiveObjectsSpawnerService;
 using HighLow.Scripts.Common;
 using HighLow.Scripts.Controllers.CardPriority;
 using HighLow.Scripts.Controllers.Gameplay;
-using UnityEngine.PlayerLoop;
-using UnityEngine.UI;
 using Zenject;
 
 namespace HighLow.Scripts.Controllers.GameLogic
@@ -40,7 +37,6 @@ namespace HighLow.Scripts.Controllers.GameLogic
                 case EnumsHandler.Moves.High:
                     if (currentCardPriorityValue > _previousCardPriorityValue)
                     {
-                        //GameWin?.Invoke();
                         if (!_gameplayController.IsFinalCard())
                         {
                             _gameplayController.MoveToNextCard();
@@ -58,7 +54,6 @@ namespace HighLow.Scripts.Controllers.GameLogic
                 case EnumsHandler.Moves.Low:
                     if (currentCardPriorityValue < _previousCardPriorityValue)
                     {
-                        //GameWin?.Invoke();
                         if (!_gameplayController.IsFinalCard())
                         {
                             _gameplayController.MoveToNextCard();
@@ -83,19 +78,6 @@ namespace HighLow.Scripts.Controllers.GameLogic
                         GameLost?.Invoke();
                     }
                     break;
-            }
-            
-            
-            
-            
-            
-            if (currentCardPriorityValue > _previousCardPriorityValue)
-            {
-                //GameWin?.Invoke();
-            }
-            else
-            {
-                //GameLost?.Invoke();
             }
         }
     }

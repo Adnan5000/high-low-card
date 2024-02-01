@@ -10,17 +10,13 @@ namespace HighLow.Scripts.Views.GameplayPanel
 {
     public class GameplayPanelMediator: Mediator<IGameplayPanel>
     {
-        private IInteractiveObjectsManager _interactiveObjectsManager;
         private IGameLogicController _gameLogicController;
-        //private IGameplayController _gameplayController;
         
         [Inject]
-        private void Init(IInteractiveObjectsManager interactiveObjectsManager,
-            IGameLogicController gameLogicController/*, IGameplayController gameplayController*/)
+        private void Init(
+            IGameLogicController gameLogicController)
         {
-            _interactiveObjectsManager = interactiveObjectsManager;
             _gameLogicController = gameLogicController;
-            //_gameplayController = gameplayController;
         }
 
         protected override void OnMediatorInitialize()

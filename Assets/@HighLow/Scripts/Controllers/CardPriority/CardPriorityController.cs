@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HighLow.Scripts.Controllers.CardPriority
 {
-    public class CardPriorityController
+    public class CardPriorityController: ICardPriorityController
     {
         private Dictionary<string, int> _cardPriorities;
 
@@ -26,8 +26,8 @@ namespace HighLow.Scripts.Controllers.CardPriority
                 {"A", 14}
             };
         }
-        
-        int GetPriorityValue(string cardType)
+
+        public int GetPriorityValue(string cardType)
         {
             if (_cardPriorities.ContainsKey(cardType))
             {

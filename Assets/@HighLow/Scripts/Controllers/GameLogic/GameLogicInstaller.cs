@@ -1,5 +1,4 @@
-﻿using HighLow.Scripts.Controllers.CardPriority;
-using Zenject;
+﻿using Zenject;
 
 namespace HighLow.Scripts.Controllers.GameLogic
 {
