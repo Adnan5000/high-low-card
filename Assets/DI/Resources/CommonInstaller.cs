@@ -3,6 +3,8 @@ using Arch.Installers;
 using Arch.InteractiveObjectsSpawnerService;
 using Arch.Signals;
 using Arch.SoundManager;
+using HighLow.Scripts.Controllers.CardPriority;
+using HighLow.Scripts.Views.Installers;
 using Zenject;
 
 namespace DI.Resources
@@ -16,6 +18,10 @@ namespace DI.Resources
             AssetReferenceInstaller.Install(Container);
             InteractiveObjectServiceInstaller.Install(Container);
             SoundManagerInstaller.Install(Container);
+            
+            MenuPanelInstaller.Install(Container);
+            
+            CardPriorityInstaller.Install(Container);
         }
     }
 }

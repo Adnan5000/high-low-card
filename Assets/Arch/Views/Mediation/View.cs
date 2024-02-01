@@ -29,11 +29,11 @@ namespace Arch.Views.Mediation
         IEnumerator FadeOut()
         {
             float elapsedTime = 0;
-
+        
             while (elapsedTime < fadeDuration)
             {
                 float alpha = Mathf.Lerp(1, 0, elapsedTime / fadeDuration);
-
+        
                 _canvasGroup.alpha = alpha;
                 elapsedTime += Time.deltaTime;
                 yield return null;
@@ -47,21 +47,21 @@ namespace Arch.Views.Mediation
         {
             _canvasGroup.alpha = 0;
             float elapsedTime = 0;
-
+        
             while (elapsedTime < fadeDuration)
             {
                 // Calculate the alpha value based on the elapsed time and fade duration
                 float alpha = Mathf.Lerp(0, 1, elapsedTime / fadeDuration);
-
+        
                 // Set the alpha value to the CanvasGroup
                 _canvasGroup.alpha = alpha;
-
+        
                 // Increment the elapsed time
                 elapsedTime += Time.deltaTime;
-
+        
                 yield return null; // Wait for the next frame
             }
-
+        
             // Ensure the alpha is set to 1 at the end to avoid any rounding errors
             _canvasGroup.alpha = 1;
         }
