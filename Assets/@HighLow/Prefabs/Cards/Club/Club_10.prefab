@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5903774123715365196}
   - component: {fileID: 5903774123715365194}
   - component: {fileID: 5903774123715365195}
+  - component: {fileID: 5570863691932455274}
+  - component: {fileID: -220884726068125439}
   m_Layer: 0
   m_Name: Club_10
   m_TagString: Untagged
@@ -84,6 +86,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!225 &5570863691932455274
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903774123715365197}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-220884726068125439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903774123715365197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb396cbd5e924f2e8c8cc4b2f2f00694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeAble: 0
+  fadeDuration: 0.5
+  cardId: 10
 --- !u!1 &5903774124577032270
 GameObject:
   m_ObjectHideFlags: 0

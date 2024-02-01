@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 5548257375217008620}
   - component: {fileID: 5548257375217008618}
   - component: {fileID: 5548257375217008619}
+  - component: {fileID: 4857833242107127353}
+  - component: {fileID: 2462764742397925986}
   m_Layer: 0
   m_Name: Spade_Jack
   m_TagString: Untagged
@@ -168,3 +170,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!225 &4857833242107127353
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548257375217008621}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2462764742397925986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548257375217008621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb396cbd5e924f2e8c8cc4b2f2f00694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeAble: 0
+  fadeDuration: 0.5
+  cardId: J

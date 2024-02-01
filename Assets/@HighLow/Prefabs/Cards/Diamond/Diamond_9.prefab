@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4078285330714388247}
   - component: {fileID: 4078285330714388249}
   - component: {fileID: 4078285330714388248}
+  - component: {fileID: -43382786593095412}
+  - component: {fileID: 6746545375701857984}
   m_Layer: 0
   m_Name: Diamond_9
   m_TagString: Untagged
@@ -84,6 +86,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!225 &-43382786593095412
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078285330714388246}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &6746545375701857984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078285330714388246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb396cbd5e924f2e8c8cc4b2f2f00694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeAble: 0
+  fadeDuration: 0.5
+  cardId: 9
 --- !u!1 &4078285331303450511
 GameObject:
   m_ObjectHideFlags: 0

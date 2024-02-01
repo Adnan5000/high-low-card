@@ -7,5 +7,12 @@ namespace HighLow.Scripts.Common
             MainMenu = 0,
             Gameplay = 1,
         }
+        
+        public enum Moves
+        {
+            High = 0,
+            Low = 1,
+            Equal = 2,
+        }
     }
 }

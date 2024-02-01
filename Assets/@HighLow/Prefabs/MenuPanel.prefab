@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba69c929e784693b3244aaccb2bb2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFadeAble: 1
   fadeDuration: 0.5
   btnPlay: {fileID: 5141876909430961384}
 --- !u!1 &5141876909430961942

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HighLow.Scripts.Common;
 using UnityEngine;
 
@@ -17,8 +18,9 @@ namespace HighLow.Scripts.Caching
         
     }
 
-    internal class Deck
+    [System.Serializable]
+    public class Deck
     {
-        
+        public List<GameObject> cards;
     }
 }

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4004052947666728235}
   - component: {fileID: 4004052947666728233}
   - component: {fileID: 4004052947666728234}
+  - component: {fileID: -3296950584016918165}
+  - component: {fileID: -959671542250239152}
   m_Layer: 0
   m_Name: Heart_6
   m_TagString: Untagged
@@ -84,6 +86,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!225 &-3296950584016918165
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004052947666728236}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-959671542250239152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004052947666728236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb396cbd5e924f2e8c8cc4b2f2f00694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeAble: 0
+  fadeDuration: 0.5
+  cardId: 6
 --- !u!1 &4004052949094167201
 GameObject:
   m_ObjectHideFlags: 0

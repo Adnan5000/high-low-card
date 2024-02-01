@@ -9,6 +9,7 @@ namespace Arch.Views.Mediation
     {
         private IMediator _mediator;
         private CanvasGroup _canvasGroup;
+        public bool isFadeAble = false;
         public float fadeDuration = 0.5f;
 
         public GameObject GetGameObject => this.gameObject;

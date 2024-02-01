@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5141876909096135265}
   - component: {fileID: 5141876909096135267}
   - component: {fileID: 5141876909096135266}
+  - component: {fileID: 572525290928123212}
+  - component: {fileID: -6546168867246336754}
   m_Layer: 5
   m_Name: GameplayPanel
   m_TagString: Untagged
@@ -77,6 +79,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &572525290928123212
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141876909096135264}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &-6546168867246336754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141876909096135264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c018b0bf2344e6905408f03f09cd72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeAble: 1
+  fadeDuration: 0.5
+  btnHigh: {fileID: 0}
+  btnLow: {fileID: 0}
+  btnEqual: {fileID: 0}
 --- !u!1 &5141876909430961942
 GameObject:
   m_ObjectHideFlags: 0
