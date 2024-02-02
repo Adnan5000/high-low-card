@@ -1,19 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using Arch.Views.Mediation;
+using HighLow.Scripts.Views.Card;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace HighLow.Scripts.Views.CardHand
 {
+    [System.Serializable]
     public class CardHandView: View, ICardHandView
     {
         public Action HandOutCards { get; set; }
-        public ushort MaxCount { get; set; }
-        public List<Transform> CardPositions { get; set; }
+        
+        [SerializeField] private ushort maxCount;
+        [SerializeField] private List<Transform> cardPositions;
+        [SerializeField] private List<CardView> cardViews;
+        
+        public ushort MaxCount => maxCount;
+        public List<Transform> CardPositions => cardPositions;
+        public List<CardView> CardViews => cardViews;
 
-        private void Start()
+        protected void Start()
         {
+            Debug.Log("CardHandView OnEnable");
             HandOutCards?.Invoke();
         }
+        
     }
 }

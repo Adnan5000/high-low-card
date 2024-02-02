@@ -4,6 +4,7 @@ namespace HighLow.Scripts.Controllers.CardPriority
 {
     public interface ICardPriorityController
     {
-        int GetPriorityValue(string cardType);
+        public void Init();
+        ushort GetPriorityValue(string cardType);
     }
 }

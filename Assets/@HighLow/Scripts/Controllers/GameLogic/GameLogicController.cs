@@ -2,6 +2,7 @@ using System;
 using HighLow.Scripts.Common;
 using HighLow.Scripts.Controllers.CardPriority;
 using HighLow.Scripts.Controllers.Gameplay;
+using UnityEngine;
 using Zenject;
 
 namespace HighLow.Scripts.Controllers.GameLogic
@@ -31,7 +32,7 @@ namespace HighLow.Scripts.Controllers.GameLogic
         public void CheckMove(string cardId, EnumsHandler.Moves moveType)
         {
             var currentCardPriorityValue = _cardPriorityController.GetPriorityValue(cardId);
-
+            Debug.Log("Card Value: "+ currentCardPriorityValue+ " Previous Card Value: "+ _previousCardPriorityValue+ " Move Type: "+ moveType);
             switch (moveType)
             {
                 case EnumsHandler.Moves.High:

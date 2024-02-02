@@ -8,6 +8,8 @@ namespace HighLow.Scripts.Views.Installers
     {
         public override void InstallBindings()
         {
+            //Container.BindInterfacesTo<CardHandView>().AsSingle();
+
             Container.BindViewToMediator<CardHandView, CardHandMediator>();
         }
     }

@@ -5,11 +5,11 @@ namespace HighLow.Scripts.Controllers.CardPriority
 {
     public class CardPriorityController: ICardPriorityController
     {
-        private Dictionary<string, int> _cardPriorities;
+        private Dictionary<string, ushort> _cardPriorities;
 
         public void Init()
         {
-            _cardPriorities = new Dictionary<string, int>
+            _cardPriorities = new Dictionary<string, ushort>
             {
                 {"2", 2},
                 {"3", 3},
@@ -27,7 +27,7 @@ namespace HighLow.Scripts.Controllers.CardPriority
             };
         }
 
-        public int GetPriorityValue(string cardType)
+        public ushort GetPriorityValue(string cardType)
         {
             if (_cardPriorities.ContainsKey(cardType))
             {
@@ -36,7 +36,7 @@ namespace HighLow.Scripts.Controllers.CardPriority
             else
             {
                 Debug.LogError("Card type not found in dictionary: " + cardType);
-                return -1;
+                return 666;
             }
         }
     }

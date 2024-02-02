@@ -1,5 +1,6 @@
 ﻿using Arch.InteractiveObjectsSpawnerService;
 using Arch.Views.Mediation;
+using HighLow.Scripts.Views.CardHand;
 using Zenject;
 
 namespace HighLow.Scripts.Views.MenuPanel
@@ -7,7 +8,7 @@ namespace HighLow.Scripts.Views.MenuPanel
     public class MenuPanelMediator: Mediator<IMenuPanelView>
     {
         private IInteractiveObjectsManager _interactiveObjectsManager;
-        
+
         [Inject]
         private void Init(IInteractiveObjectsManager interactiveObjectsManager)
         {
@@ -25,7 +26,7 @@ namespace HighLow.Scripts.Views.MenuPanel
         {
             View.Remove();
             _interactiveObjectsManager.Instantiate("GameplayPanel", "GamplayUIContainer");
-
+            _interactiveObjectsManager.Instantiate("CardHand", "CardHandContainer");
         }
     }
 }

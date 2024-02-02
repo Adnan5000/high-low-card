@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: GameplayPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7bd77193be4478e4ba252b8704312421
+    m_Address: CardHand
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e3a317383c31a5149a98611323d4c07b, type: 2}
   m_SchemaSet:

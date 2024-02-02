@@ -11,12 +11,14 @@ namespace HighLow.Scripts.Views.GameplayPanel
     public class GameplayPanelMediator: Mediator<IGameplayPanel>
     {
         private IGameLogicController _gameLogicController;
-        
+        private IGameplayController _gameplayController;
+
         [Inject]
         private void Init(
-            IGameLogicController gameLogicController)
+            IGameLogicController gameLogicController, IGameplayController gameplayController)
         {
             _gameLogicController = gameLogicController;
+            _gameplayController = gameplayController;
         }
 
         protected override void OnMediatorInitialize()
@@ -31,17 +33,17 @@ namespace HighLow.Scripts.Views.GameplayPanel
         //ToDo: Get ids of card from the hand or gameplaycontroller
         private void OnHigh()
         {
-            _gameLogicController.CheckMove("6", EnumsHandler.Moves.High);
+            _gameLogicController.CheckMove(_gameplayController.GetCardId(), EnumsHandler.Moves.High);
         }
 
         private void OnLow()
         {
-            _gameLogicController.CheckMove("6", EnumsHandler.Moves.Low);
+            _gameLogicController.CheckMove(_gameplayController.GetCardId(), EnumsHandler.Moves.Low);
         }
 
         private void OnEqual()
         {
-            _gameLogicController.CheckMove("6", EnumsHandler.Moves.Equal);
+            _gameLogicController.CheckMove(_gameplayController.GetCardId(), EnumsHandler.Moves.Equal);
         }
     }
 }

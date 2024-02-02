@@ -6,5 +6,10 @@ namespace HighLow.Scripts.Views.Card
     public class CardView: View, ICardView
     {
         [SerializeField] private string cardId;
+        
+        public string GetCardId()
+        {
+            return cardId;
+        }
     }
 }
