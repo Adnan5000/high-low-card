@@ -36,6 +36,12 @@ namespace HighLow.Scripts.Controllers.GameLogic
             switch (moveType)
             {
                 case EnumsHandler.Moves.High:
+                    if (currentCardPriorityValue == _previousCardPriorityValue)
+                    {
+                        GameLost?.Invoke();
+                        return;
+                    }
+                    
                     if (currentCardPriorityValue > _previousCardPriorityValue)
                     {
                         if (!_gameplayController.IsFinalCard())
@@ -53,6 +59,12 @@ namespace HighLow.Scripts.Controllers.GameLogic
                     }
                     break;
                 case EnumsHandler.Moves.Low:
+                    if (currentCardPriorityValue == _previousCardPriorityValue)
+                    {
+                        GameLost?.Invoke();
+                        return;
+                    }
+                    
                     if (currentCardPriorityValue < _previousCardPriorityValue)
                     {
                         if (!_gameplayController.IsFinalCard())
