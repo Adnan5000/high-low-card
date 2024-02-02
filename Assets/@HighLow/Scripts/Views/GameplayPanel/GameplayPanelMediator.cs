@@ -37,14 +37,22 @@ namespace HighLow.Scripts.Views.GameplayPanel
 
         private void OnGameWin()
         {
-            View.Remove();
-            _interactiveObjectsManager.Instantiate("WinPanel", "PopupsContainer");        
+            if(View != null)
+                View.Remove(() =>
+                {
+                    _interactiveObjectsManager.Instantiate("WinPanel", "PopupsContainer");
+                });
+
         }
 
         private void OnGameLost()
         {
-            View.Remove();
-            _interactiveObjectsManager.Instantiate("LostPanel", "PopupsContainer");        
+            if(View!= null)
+                View.Remove(() =>
+                {
+                    _interactiveObjectsManager.Instantiate("LostPanel", "PopupsContainer");
+                });
+
         }
 
         //ToDo: Get ids of card from the hand or gameplaycontroller

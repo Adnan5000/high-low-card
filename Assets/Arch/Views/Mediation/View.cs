@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using ModestTree.Util;
 using UnityEngine;
 using Zenject;
 
@@ -22,12 +24,12 @@ namespace Arch.Views.Mediation
             StartCoroutine(FadeIn());
         }
 
-        public virtual void Remove()
+        public virtual void Remove(Action callback)
         {
-            StartCoroutine(FadeOut());
+            StartCoroutine(FadeOut(callback));
         }
         
-        IEnumerator FadeOut()
+        IEnumerator FadeOut(Action callback)
         {
             float elapsedTime = 0;
         
@@ -42,6 +44,9 @@ namespace Arch.Views.Mediation
             _canvasGroup.alpha = 0;
             
             Destroy(gameObject);
+            
+            callback?.Invoke();
+           
         }
         
         IEnumerator FadeIn()

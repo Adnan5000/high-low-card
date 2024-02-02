@@ -24,9 +24,13 @@ namespace HighLow.Scripts.Views.MenuPanel
 
         private void OnPlay()
         {
-            View.Remove();
-            _interactiveObjectsManager.Instantiate("GameplayPanel", "GamplayUIContainer");
-            _interactiveObjectsManager.Instantiate("CardHand", "CardHandContainer");
+            View.Remove(() =>
+            {
+                _interactiveObjectsManager.Instantiate("GameplayPanel", "GamplayUIContainer");
+                _interactiveObjectsManager.Instantiate("CardHand", "CardHandContainer");
+            });
+            
+            
         }
     }
 }

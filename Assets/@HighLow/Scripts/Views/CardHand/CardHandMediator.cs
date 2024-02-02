@@ -14,13 +14,15 @@ namespace HighLow.Scripts.Views.CardHand
     {
         private IGameplayController _gameplayController;
         private ICardPriorityController _cardPriorityController;
+        private IGameLogicController _gameLogicController;
 
         [Inject]
         private void Init(
-            IGameplayController gameplayController, ICardPriorityController cardPriorityController)
+            IGameplayController gameplayController, ICardPriorityController cardPriorityController, IGameLogicController gameLogicController)
         {
             _gameplayController = gameplayController;
             _cardPriorityController = cardPriorityController;
+            _gameLogicController = gameLogicController;
         }
 
         protected override void OnMediatorInitialize()
@@ -28,8 +30,22 @@ namespace HighLow.Scripts.Views.CardHand
             base.OnMediatorInitialize();
 
             View.HandOutCards += OnHandOutCards;
+            
+            _gameLogicController.GameLost += OnGameLost;
+            _gameLogicController.GameWin += OnGameWin;
         }
-        
+
+        private void OnGameWin()
+        {
+            View.Remove(null);
+        }
+
+        private void OnGameLost()
+        {
+            View.Remove(null);
+
+        }
+
         private void OnHandOutCards()
         {
             _cardPriorityController.Init();

@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebed2be2f13e4ebb87dd40a484c3c3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFadeAble: 0
+  isFadeAble: 1
   fadeDuration: 0.5
   maxCount: 7
   cardPositions:
@@ -172,6 +172,7 @@ MonoBehaviour:
   - {fileID: 1803797789574168142}
   - {fileID: 6465476310198610951}
   - {fileID: 6233588967097974534}
+  cardViews: []
 --- !u!1 &4563606904542463477
 GameObject:
   m_ObjectHideFlags: 0

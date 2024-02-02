@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Arch.Views.Mediation
@@ -5,6 +6,6 @@ namespace Arch.Views.Mediation
     public interface IView
     {
         GameObject GetGameObject { get; }
-        void Remove();
+        void Remove(Action callback);
     }
 }
