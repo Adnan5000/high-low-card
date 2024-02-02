@@ -6,6 +6,7 @@ using Arch.SoundManager;
 using HighLow.Scripts.Controllers.CardPriority;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Gameplay;
+using HighLow.Scripts.Controllers.Result;
 using HighLow.Scripts.Views.Installers;
 using Zenject;
 
@@ -30,7 +31,7 @@ namespace DI.Resources
             CardHandInstaller.Install(Container);
             CardInstaller.Install(Container);
 
-
+            ResultInstaller.Install(Container);
 
         }
     }

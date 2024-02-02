@@ -34,7 +34,7 @@ namespace HighLow.Scripts.Controllers.Gameplay
             _currentCardIndex = 1;
             _maxCount = maxCount;
             
-            _gamelogicController.SetPreviousCardPriorityValue(_cardPriorityController.GetPriorityValue(_cardViews[0].GetCardId()));
+            _gamelogicController.SetPreviousCardPriorityValue(_cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex-1].GetCardId()));
             Debug.Log("card index: "+ _currentCardIndex+ " max count: "+ _maxCount);
         }
 
@@ -42,6 +42,8 @@ namespace HighLow.Scripts.Controllers.Gameplay
         public void MoveToNextCard()
         {
             _currentCardIndex++;
+            _gamelogicController.SetPreviousCardPriorityValue(_cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex-1].GetCardId()));
+
             Debug.Log("card index: "+ _currentCardIndex+ " max count: "+ _maxCount);
 
         }

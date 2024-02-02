@@ -12,13 +12,15 @@ namespace HighLow.Scripts.Views.GameplayPanel
     {
         private IGameLogicController _gameLogicController;
         private IGameplayController _gameplayController;
+        private IInteractiveObjectsManager _interactiveObjectsManager;
 
         [Inject]
         private void Init(
-            IGameLogicController gameLogicController, IGameplayController gameplayController)
+            IGameLogicController gameLogicController, IGameplayController gameplayController, IInteractiveObjectsManager interactiveObjectsManager)
         {
             _gameLogicController = gameLogicController;
             _gameplayController = gameplayController;
+            _interactiveObjectsManager = interactiveObjectsManager;
         }
 
         protected override void OnMediatorInitialize()
@@ -28,6 +30,21 @@ namespace HighLow.Scripts.Views.GameplayPanel
             View.HighButtonClicked += OnHigh;
             View.LowButtonClicked += OnLow;
             View.EqualButtonClicked += OnEqual;
+            
+            _gameLogicController.GameLost += OnGameLost;
+            _gameLogicController.GameWin += OnGameWin;
+        }
+
+        private void OnGameWin()
+        {
+            View.Remove();
+            _interactiveObjectsManager.Instantiate("WinPanel", "PopupsContainer");        
+        }
+
+        private void OnGameLost()
+        {
+            View.Remove();
+            _interactiveObjectsManager.Instantiate("LostPanel", "PopupsContainer");        
         }
 
         //ToDo: Get ids of card from the hand or gameplaycontroller

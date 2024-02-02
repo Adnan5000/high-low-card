@@ -29,6 +29,14 @@ MonoBehaviour:
     m_Address: CardHand
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: fe3f2e60f559d6c40a369c499e0fcf67
+    m_Address: WinPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: af95b4201de1bf343880c8dc40da9e67
+    m_Address: LostPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e3a317383c31a5149a98611323d4c07b, type: 2}
   m_SchemaSet:
