@@ -4,6 +4,7 @@ using HighLow.Scripts.Common;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Gameplay;
 using Unity.VisualScripting;
+using UnityEngine;
 using Zenject;
 
 namespace HighLow.Scripts.Views.GameplayPanel
@@ -15,8 +16,9 @@ namespace HighLow.Scripts.Views.GameplayPanel
         private IInteractiveObjectsManager _interactiveObjectsManager;
 
         [Inject]
-        private void Init(
-            IGameLogicController gameLogicController, IGameplayController gameplayController, IInteractiveObjectsManager interactiveObjectsManager)
+        private void Init(IGameLogicController gameLogicController, 
+            IGameplayController gameplayController, 
+            IInteractiveObjectsManager interactiveObjectsManager)
         {
             _gameLogicController = gameLogicController;
             _gameplayController = gameplayController;
@@ -34,6 +36,13 @@ namespace HighLow.Scripts.Views.GameplayPanel
             _gameLogicController.GameLost += OnGameLost;
             _gameLogicController.GameWin += OnGameWin;
         }
+
+        protected override void OnMediatorDispose()
+        {
+            _gameLogicController.GameLost -= OnGameLost;
+            _gameLogicController.GameWin -= OnGameWin;
+        }
+
 
         private void OnGameWin()
         {

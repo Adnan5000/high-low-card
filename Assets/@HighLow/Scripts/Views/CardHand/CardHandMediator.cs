@@ -34,6 +34,12 @@ namespace HighLow.Scripts.Views.CardHand
             _gameLogicController.GameLost += OnGameLost;
             _gameLogicController.GameWin += OnGameWin;
         }
+        
+        protected override void OnMediatorDispose()
+        {
+            _gameLogicController.GameLost -= OnGameLost;
+            _gameLogicController.GameWin -= OnGameWin;
+        }
 
         private void OnGameWin()
         {
@@ -51,7 +57,8 @@ namespace HighLow.Scripts.Views.CardHand
             _cardPriorityController.Init();
             
             DataProvider.Instance.deck.ShuffleDeck();
-            
+            _gameplayController.CardViews.Clear();
+
             for (int i = 0; i < View.MaxCount; i++)
             {
                 GameObject card = DataProvider.Instance.deck.GetCard().gameObject;

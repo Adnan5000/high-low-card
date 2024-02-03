@@ -7,7 +7,7 @@ using Zenject;
 
 namespace HighLow.Scripts.Controllers.GameLogic
 {
-    class GameLogicController : IGameLogicController
+    public class GameLogicController : IGameLogicController
     {
         public Action GameWin{ get; set; }
         public Action GameLost { get; set; }
@@ -39,10 +39,9 @@ namespace HighLow.Scripts.Controllers.GameLogic
                     if (currentCardPriorityValue == _previousCardPriorityValue)
                     {
                         GameLost?.Invoke();
-                        return;
                     }
                     
-                    if (currentCardPriorityValue > _previousCardPriorityValue)
+                    else if (currentCardPriorityValue > _previousCardPriorityValue)
                     {
                         if (!_gameplayController.IsFinalCard())
                         {
@@ -50,7 +49,7 @@ namespace HighLow.Scripts.Controllers.GameLogic
                         }
                         else
                         {
-                            GameLost?.Invoke();
+                            GameWin?.Invoke();
                         }
                     }
                     else
@@ -62,10 +61,9 @@ namespace HighLow.Scripts.Controllers.GameLogic
                     if (currentCardPriorityValue == _previousCardPriorityValue)
                     {
                         GameLost?.Invoke();
-                        return;
                     }
                     
-                    if (currentCardPriorityValue < _previousCardPriorityValue)
+                    else if (currentCardPriorityValue < _previousCardPriorityValue)
                     {
                         if (!_gameplayController.IsFinalCard())
                         {
@@ -73,7 +71,7 @@ namespace HighLow.Scripts.Controllers.GameLogic
                         }
                         else
                         {
-                            GameLost?.Invoke();
+                            GameWin?.Invoke();
                         }
                     }
                     else

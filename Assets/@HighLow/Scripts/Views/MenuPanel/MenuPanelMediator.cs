@@ -1,6 +1,7 @@
 ﻿using Arch.InteractiveObjectsSpawnerService;
 using Arch.Views.Mediation;
 using HighLow.Scripts.Views.CardHand;
+using UnityEngine;
 using Zenject;
 
 namespace HighLow.Scripts.Views.MenuPanel

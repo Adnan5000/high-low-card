@@ -31,6 +31,7 @@ namespace HighLow.Scripts.Controllers.Gameplay
 
         public void InitCards(ushort maxCount)
         {
+
             _currentCardIndex = 1;
             _maxCount = maxCount;
             

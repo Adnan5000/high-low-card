@@ -22,7 +22,6 @@ namespace HighLow.Scripts.Views.CardHand
 
         protected void Start()
         {
-            Debug.Log("CardHandView OnEnable");
             HandOutCards?.Invoke();
         }
         
