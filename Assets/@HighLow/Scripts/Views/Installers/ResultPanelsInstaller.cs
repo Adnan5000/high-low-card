@@ -1,6 +1,7 @@
 ﻿using Arch.Views.Mediation;
 using HighLow.Scripts.Views.MenuPanel;
 using HighLow.Scripts.Views.ResultPanels.LostPanel;
+using HighLow.Scripts.Views.ResultPanels.StatPanel;
 using HighLow.Scripts.Views.ResultPanels.WinPanel;
 using Zenject;
 
@@ -12,6 +13,8 @@ namespace HighLow.Scripts.Views.Installers
         {
             Container.BindViewToMediator<WinPanelView, WinPanelMediator>();
             Container.BindViewToMediator<LostPanelView, LostPanelMediator>();
+            Container.BindViewToMediator<StatPanelView, StatPanelMediator>();
+
         }
     }
 }

@@ -3,6 +3,7 @@ using Arch.Views.Mediation;
 using HighLow.Scripts.Common;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Gameplay;
+using HighLow.Scripts.Controllers.Stat;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
@@ -14,15 +15,18 @@ namespace HighLow.Scripts.Views.GameplayPanel
         private IGameLogicController _gameLogicController;
         private IGameplayController _gameplayController;
         private IInteractiveObjectsManager _interactiveObjectsManager;
+        private IStatController _statController;
 
         [Inject]
         private void Init(IGameLogicController gameLogicController, 
             IGameplayController gameplayController, 
-            IInteractiveObjectsManager interactiveObjectsManager)
+            IInteractiveObjectsManager interactiveObjectsManager,
+            IStatController statController)
         {
             _gameLogicController = gameLogicController;
             _gameplayController = gameplayController;
             _interactiveObjectsManager = interactiveObjectsManager;
+            _statController = statController;
         }
 
         protected override void OnMediatorInitialize()
@@ -46,20 +50,32 @@ namespace HighLow.Scripts.Views.GameplayPanel
 
         private void OnGameWin()
         {
+            _statController.UpdateWins(1);
+            _statController.UpdateFailures(3);
+            _statController.UpdateResponse(5);
+            _statController.UpdateBestStreak(10);
+            
             if(View != null)
                 View.Remove(() =>
                 {
                     _interactiveObjectsManager.Instantiate("WinPanel", "PopupsContainer");
+                    _interactiveObjectsManager.Instantiate("StatPanel", "StatContainer");
                 });
 
         }
 
         private void OnGameLost()
         {
+            _statController.UpdateWins(555);
+            _statController.UpdateFailures(555);
+            _statController.UpdateResponse(555);
+            _statController.UpdateBestStreak(555);
+            
             if(View!= null)
                 View.Remove(() =>
                 {
                     _interactiveObjectsManager.Instantiate("LostPanel", "PopupsContainer");
+                    _interactiveObjectsManager.Instantiate("StatPanel", "StatContainer");
                 });
 
         }
