@@ -36,7 +36,7 @@ namespace HighLow.Scripts.Controllers.Gameplay
 
         public void InitCards(ushort maxCount)
         {
-
+            _cardViews[0].TurnCardFrontFace();
             _currentCardIndex = 1;
             _maxCount = maxCount;
             
@@ -48,6 +48,8 @@ namespace HighLow.Scripts.Controllers.Gameplay
         public void MoveToNextCard()
         {
             _timeController.ResetChoiceTimer();
+            
+            _cardViews[_currentCardIndex].TurnCardFrontFace();
             
             _currentCardIndex++;
             _gamelogicController.SetPreviousCardPriorityValue(_cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex-1].GetCardId()));

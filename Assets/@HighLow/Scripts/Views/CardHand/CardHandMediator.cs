@@ -5,6 +5,7 @@ using HighLow.Scripts.Controllers.CardPriority;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Gameplay;
 using HighLow.Scripts.Views.Card;
+using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
@@ -62,7 +63,11 @@ namespace HighLow.Scripts.Views.CardHand
             for (int i = 0; i < View.MaxCount; i++)
             {
                 GameObject card = DataProvider.Instance.deck.GetCard().gameObject;
-                card = Object.Instantiate(card, View.CardPositions[i].position, Quaternion.identity);
+                card = Object.Instantiate(card, /*card.transform.position*/new Vector3(0,0,0), Quaternion.identity);
+                card.transform.DOMove(View.CardPositions[i].position, 0.5f).OnComplete(()=>
+                {
+                });
+                card.transform.SetParent(View.CardPositions[i]);
                 card.transform.SetParent(View.CardPositions[i]);
                 _gameplayController.CardViews.Add(card.GetComponent<CardView>());
 
