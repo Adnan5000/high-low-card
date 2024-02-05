@@ -1,11 +1,11 @@
-﻿using Arch.InteractiveObjectsSpawnerService;
+﻿using System.Threading.Tasks;
+using Arch.InteractiveObjectsSpawnerService;
 using Arch.Views.Mediation;
 using HighLow.Scripts.Common;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Gameplay;
 using HighLow.Scripts.Controllers.Stat;
-using Unity.VisualScripting;
-using UnityEngine;
+using HighLow.Scripts.Controllers.Time;
 using Zenject;
 
 namespace HighLow.Scripts.Views.GameplayPanel
@@ -16,17 +16,20 @@ namespace HighLow.Scripts.Views.GameplayPanel
         private IGameplayController _gameplayController;
         private IInteractiveObjectsManager _interactiveObjectsManager;
         private IStatController _statController;
+        private ITimeController _timeController;
 
         [Inject]
         private void Init(IGameLogicController gameLogicController, 
             IGameplayController gameplayController, 
             IInteractiveObjectsManager interactiveObjectsManager,
-            IStatController statController)
+            IStatController statController,
+            ITimeController timeController)
         {
             _gameLogicController = gameLogicController;
             _gameplayController = gameplayController;
             _interactiveObjectsManager = interactiveObjectsManager;
             _statController = statController;
+            _timeController = timeController;
         }
 
         protected override void OnMediatorInitialize()
@@ -39,6 +42,9 @@ namespace HighLow.Scripts.Views.GameplayPanel
             
             _gameLogicController.GameLost += OnGameLost;
             _gameLogicController.GameWin += OnGameWin;
+
+            _timeController.StartTimer();
+            ShowTime();
         }
 
         protected override void OnMediatorDispose()
@@ -47,9 +53,19 @@ namespace HighLow.Scripts.Views.GameplayPanel
             _gameLogicController.GameWin -= OnGameWin;
         }
 
+        private async Task ShowTime()
+        {
+            while (true)
+            {
+                View.TxtChoiceTime.text = _timeController.ChoiceTimeText;
+                await Task.Delay(5);
+            }
+        }
 
         private void OnGameWin()
         {
+            _timeController.StopTimer();
+            
             _statController.UpdateWins(1);
             _statController.UpdateFailures(3);
             _statController.UpdateResponse(5);
@@ -61,11 +77,12 @@ namespace HighLow.Scripts.Views.GameplayPanel
                     _interactiveObjectsManager.Instantiate("WinPanel", "PopupsContainer");
                     _interactiveObjectsManager.Instantiate("StatPanel", "StatContainer");
                 });
-
         }
 
         private void OnGameLost()
         {
+            _timeController.StopTimer();
+            
             _statController.UpdateWins(555);
             _statController.UpdateFailures(555);
             _statController.UpdateResponse(555);
@@ -77,10 +94,8 @@ namespace HighLow.Scripts.Views.GameplayPanel
                     _interactiveObjectsManager.Instantiate("LostPanel", "PopupsContainer");
                     _interactiveObjectsManager.Instantiate("StatPanel", "StatContainer");
                 });
-
         }
 
-        //ToDo: Get ids of card from the hand or gameplaycontroller
         private void OnHigh()
         {
             _gameLogicController.CheckMove(_gameplayController.GetCardId(), EnumsHandler.Moves.High);

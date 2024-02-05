@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using HighLow.Scripts.Controllers.CardPriority;
 using HighLow.Scripts.Controllers.GameLogic;
+using HighLow.Scripts.Controllers.Time;
 using HighLow.Scripts.Views.Card;
 using HighLow.Scripts.Views.CardHand;
 using UnityEngine;
@@ -15,12 +16,16 @@ namespace HighLow.Scripts.Controllers.Gameplay
         private List<CardView> _cardViews = new List<CardView>();
         private IGameLogicController _gamelogicController;
         private ICardPriorityController _cardPriorityController;
+        private ITimeController _timeController;
 
         [Inject]
-        private void Init(IGameLogicController gameLogicController, ICardPriorityController cardPriorityController)
+        private void Init(IGameLogicController gameLogicController, 
+            ICardPriorityController cardPriorityController,
+            ITimeController timeController)
         {
             _gamelogicController = gameLogicController;
             _cardPriorityController = cardPriorityController;
+            _timeController = timeController;
         }
         
         public List<CardView> CardViews
@@ -42,6 +47,8 @@ namespace HighLow.Scripts.Controllers.Gameplay
 
         public void MoveToNextCard()
         {
+            _timeController.ResetChoiceTimer();
+            
             _currentCardIndex++;
             _gamelogicController.SetPreviousCardPriorityValue(_cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex-1].GetCardId()));
 

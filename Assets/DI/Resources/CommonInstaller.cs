@@ -7,6 +7,7 @@ using HighLow.Scripts.Controllers.CardPriority;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Gameplay;
 using HighLow.Scripts.Controllers.Stat;
+using HighLow.Scripts.Controllers.Time;
 using HighLow.Scripts.Views.Installers;
 using Zenject;
 
@@ -31,8 +32,8 @@ namespace DI.Resources
             CardHandInstaller.Install(Container);
             CardInstaller.Install(Container);
 
+            TimeInstaller.Install(Container);
             StatInstaller.Install(Container);
-            
             ResultPanelsInstaller.Install(Container);
 
         }

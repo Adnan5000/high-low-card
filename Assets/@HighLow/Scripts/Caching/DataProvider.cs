@@ -19,15 +19,18 @@ namespace HighLow.Scripts.Caching
     [System.Serializable]
     public class Deck
     {
+        public int counter = 0;
         public List<GameObject> cards;
         public CardView GetCard()
         {
-            CardView card = cards[0].GetComponent<CardView>();
-            cards.RemoveAt(0);
+            CardView card = cards[counter].GetComponent<CardView>();
+            counter++;
             return card;
         }
         public void ShuffleDeck()
         {
+            counter = 0;
+            
             System.Random rng = new System.Random();
             ushort n = (ushort)cards.Count;
             while (n > 1)
