@@ -25,12 +25,12 @@ namespace HighLow.Scripts.Views.ResultPanels.StatPanel
         
         public void SetAvgTime(float value)
         {
-            avgTime.text = value.ToString("F2");
+            avgTime.text = value+" sec.";
         }
         
         public void SetBestTime(float value)
         {
-            bestTime.text = value.ToString("F2");
+            bestTime.text = value+" sec.";
         }
     }
 }

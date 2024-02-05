@@ -69,9 +69,11 @@ namespace HighLow.Scripts.Views.GameplayPanel
         {
             _timeController.StopTimer();
             
+            _statController.CheckAndSetBestStreak();
+            
             _statController.UpdateWins();
+            
             _statController.UpdateResponse(5);
-            _statController.UpdateBestStreak(10);
             
             if(View != null)
                 View.Remove(() =>
@@ -86,8 +88,8 @@ namespace HighLow.Scripts.Views.GameplayPanel
             _timeController.StopTimer();
             
             _statController.UpdateFailures();
+            
             _statController.UpdateResponse(555);
-            _statController.UpdateBestStreak(555);
             
             if(View!= null)
                 View.Remove(() =>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using HighLow.Scripts.Controllers.GameLogic;
+using HighLow.Scripts.Controllers.Stat;
 using UnityEngine;
 using Zenject;
 
@@ -13,14 +14,19 @@ namespace HighLow.Scripts.Controllers.Time
         private float _choiceTime = 5f;
         private string _choiceTimeText;
         
+        public float Timer => _timer;
+        
         public string ChoiceTimeText => _choiceTimeText;
         
         private IGameLogicController _gamelogicController;
+        private IStatController _statController;
 
         [Inject]
-        private void Init(IGameLogicController gameLogicController)
+        private void Init(IGameLogicController gameLogicController,
+            IStatController statController)
         {
             _gamelogicController = gameLogicController;
+            _statController = statController;
         }
         
         public async Task StartTimer()
@@ -31,11 +37,11 @@ namespace HighLow.Scripts.Controllers.Time
             if (!_isTimerRunning)
             {
                 _isTimerRunning = true;
-                await Timer();
+                await TimerRoutine();
             }
         }
         
-        private async Task Timer()
+        private async Task TimerRoutine()
         {
             while (_isTimerRunning)
             {

@@ -6,7 +6,7 @@
         public void UpdateWins();
         public void UpdateFailures();
         public void UpdateResponse(int value);
-        public void UpdateBestStreak(int value);
+        public void CheckAndSetBestStreak();
         public StatsInfo GetStats();
         public void DeleteData();
     }

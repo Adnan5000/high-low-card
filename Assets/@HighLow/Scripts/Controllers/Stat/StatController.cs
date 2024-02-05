@@ -1,14 +1,23 @@
 ﻿using System.IO;
 using HighLow.Scripts.Common;
-using Unity.VisualScripting;
+using HighLow.Scripts.Controllers.GameLogic;
+using HighLow.Scripts.Controllers.Time;
 using UnityEngine;
+using Zenject;
+using IInitializable = Unity.VisualScripting.IInitializable;
 
 namespace HighLow.Scripts.Controllers.Stat
 {
     public class StatController : IInitializable ,IStatController
     {
+        private ITimeController _timeController;
         private StatsInfo StatsInfo { get; set; } = new StatsInfo();
         
+        [Inject]
+        private void Init(ITimeController timeController)
+        {
+            _timeController = timeController;
+        }
         
         public void Initialize()
         {
@@ -58,7 +67,7 @@ namespace HighLow.Scripts.Controllers.Stat
             SaveData();
         }
         
-        public void UpdateBestStreak(int value)
+        private void UpdateBestStreak(int value)
         {
             StatsInfo.BestStreak = value;
             SaveData();
@@ -69,6 +78,14 @@ namespace HighLow.Scripts.Controllers.Stat
             LoadData();
             return StatsInfo;
         }
+        
+        public void CheckAndSetBestStreak()
+        {
+            if (_timeController.Timer < GetStats().BestStreak)
+            {
+                UpdateBestStreak((int)_timeController.Timer);
+            }
+        }
     }
     
     [System.Serializable]
@@ -77,7 +94,7 @@ namespace HighLow.Scripts.Controllers.Stat
         public int TotalWins = 0;
         public int TotalFailures = 0;
         public int AverageResponse = 0;
-        public int BestStreak = 0;
+        public int BestStreak = 999;
     }
     
     public struct StatsWrapper
