@@ -43,8 +43,11 @@ namespace HighLow.Scripts.Views.GameplayPanel
             _gameLogicController.GameLost += OnGameLost;
             _gameLogicController.GameWin += OnGameWin;
 
+            _statController.Initialize();
+            
             _timeController.StartTimer();
             ShowTime();
+            
         }
 
         protected override void OnMediatorDispose()
@@ -66,8 +69,7 @@ namespace HighLow.Scripts.Views.GameplayPanel
         {
             _timeController.StopTimer();
             
-            _statController.UpdateWins(1);
-            _statController.UpdateFailures(3);
+            _statController.UpdateWins();
             _statController.UpdateResponse(5);
             _statController.UpdateBestStreak(10);
             
@@ -83,8 +85,7 @@ namespace HighLow.Scripts.Views.GameplayPanel
         {
             _timeController.StopTimer();
             
-            _statController.UpdateWins(555);
-            _statController.UpdateFailures(555);
+            _statController.UpdateFailures();
             _statController.UpdateResponse(555);
             _statController.UpdateBestStreak(555);
             

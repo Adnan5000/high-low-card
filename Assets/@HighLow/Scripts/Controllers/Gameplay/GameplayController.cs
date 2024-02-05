@@ -3,7 +3,6 @@ using HighLow.Scripts.Controllers.CardPriority;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Time;
 using HighLow.Scripts.Views.Card;
-using HighLow.Scripts.Views.CardHand;
 using UnityEngine;
 using Zenject;
 

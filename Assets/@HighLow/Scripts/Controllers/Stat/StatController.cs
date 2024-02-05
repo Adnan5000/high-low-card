@@ -12,6 +12,7 @@ namespace HighLow.Scripts.Controllers.Stat
         
         public void Initialize()
         {
+            Debug.Log("Stat controller initialized");
             LoadData();
         }
         
@@ -23,6 +24,7 @@ namespace HighLow.Scripts.Controllers.Stat
         public void DeleteData()
         {
             DataSaver.DeleteData(GetSavePath());
+            StatsInfo = new StatsInfo();
         }
 
         public void LoadData()
@@ -38,15 +40,15 @@ namespace HighLow.Scripts.Controllers.Stat
             return Path.Combine(Application.persistentDataPath,"StatsInfo.json");
         }
 
-        public void UpdateWins(int value)
+        public void UpdateWins()
         {
-            StatsInfo.TotalWins = value;
+            StatsInfo.TotalWins++;
             SaveData();
         }
         
-        public void UpdateFailures(int value)
+        public void UpdateFailures()
         {
-            StatsInfo.TotalFailures = value;
+            StatsInfo.TotalFailures++;
             SaveData();
         }
         
@@ -67,12 +69,8 @@ namespace HighLow.Scripts.Controllers.Stat
             LoadData();
             return StatsInfo;
         }
-
-        // public int Wins { get; set; }
-        // public int Failures { get; set; }
-        // public int AvgTime { get; set; }
-        // public int BestTime { get; set; }
     }
+    
     [System.Serializable]
     public class StatsInfo
     {

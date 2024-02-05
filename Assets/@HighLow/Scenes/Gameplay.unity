@@ -1094,6 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deck:
+    counter: 0
     cards:
     - {fileID: 77071249597866072, guid: 6b5188751433cab4abaad5c3281b6c06, type: 3}
     - {fileID: 493035363350228986, guid: 011142c18724468489cf172fded7165a, type: 3}
