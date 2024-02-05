@@ -65,8 +65,11 @@ namespace HighLow.Scripts.Views.CardHand
                 card = Object.Instantiate(card, View.CardPositions[i].position, Quaternion.identity);
                 card.transform.SetParent(View.CardPositions[i]);
                 _gameplayController.CardViews.Add(card.GetComponent<CardView>());
-                //rotate the card to face the player - Y axis
-                card.transform.Rotate(0, 180, 0);
+
+                if (View.ShowCardsForDebug)
+                {
+                    card.transform.Rotate(0, 180, 0);
+                }
             }
             
             _gameplayController.InitCards(View.MaxCount);
