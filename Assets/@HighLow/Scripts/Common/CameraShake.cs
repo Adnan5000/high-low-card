@@ -1,46 +1,42 @@
 using UnityEngine;
 using System.Collections;
 
-public class CameraShake : MonoBehaviour
-{
-	// Transform of the camera to shake. Grabs the gameObject's transform
-	// if null.
-	public Transform camTransform;
-	
-	// How long the object should shake for.
-	public float shakeDuration = 0f;
-	
-	// Amplitude of the shake. A larger value shakes the camera harder.
-	public float shakeAmount = 0.7f;
-	public float decreaseFactor = 1.0f;
-	
-	Vector3 originalPos;
-	
-	void Awake()
-	{
-		if (camTransform == null)
-		{
-			camTransform = GetComponent(typeof(Transform)) as Transform;
-		}
-	}
-	
-	void OnEnable()
-	{
-		originalPos = camTransform.localPosition;
-	}
+public class CameraShake : MonoBehaviour {
+    public static CameraShake instance;
 
-	void Update()
-	{
-		if (shakeDuration > 0)
-		{
-			camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
-			
-			shakeDuration -= Time.deltaTime * decreaseFactor;
-		}
-		else
-		{
-			shakeDuration = 0f;
-			camTransform.localPosition = originalPos;
-		}
-	}
+    private Vector3 _originalPos;
+    private float _timeAtCurrentFrame;
+    private float _timeAtLastFrame;
+    private float _fakeDelta;
+
+    void Awake() {
+        instance = this;
+    }
+
+    void Update() {
+        // Calculate a fake delta time, so we can Shake while game is paused.
+        _timeAtCurrentFrame = Time.realtimeSinceStartup;
+        _fakeDelta = _timeAtCurrentFrame - _timeAtLastFrame;
+        _timeAtLastFrame = _timeAtCurrentFrame; 
+    }
+
+    public static void Shake (float duration, float amount) {
+        instance._originalPos = instance.gameObject.transform.localPosition;
+        instance.StopAllCoroutines();
+        instance.StartCoroutine(instance.cShake(duration, amount));
+    }
+
+    public IEnumerator cShake (float duration, float amount) {
+        float endTime = Time.time + duration;
+
+        while (duration > 0) {
+            transform.localPosition = _originalPos + Random.insideUnitSphere * amount;
+
+            duration -= _fakeDelta;
+
+            yield return null;
+        }
+
+        transform.localPosition = _originalPos;
+    }
 }

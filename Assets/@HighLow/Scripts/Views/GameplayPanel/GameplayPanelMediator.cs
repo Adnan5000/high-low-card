@@ -10,7 +10,7 @@ using Zenject;
 
 namespace HighLow.Scripts.Views.GameplayPanel
 {
-    public class GameplayPanelMediator: Mediator<IGameplayPanel>
+    public class GameplayPanelMediator : Mediator<IGameplayPanel>
     {
         private IGameLogicController _gameLogicController;
         private IGameplayController _gameplayController;
@@ -19,8 +19,8 @@ namespace HighLow.Scripts.Views.GameplayPanel
         private ITimeController _timeController;
 
         [Inject]
-        private void Init(IGameLogicController gameLogicController, 
-            IGameplayController gameplayController, 
+        private void Init(IGameLogicController gameLogicController,
+            IGameplayController gameplayController,
             IInteractiveObjectsManager interactiveObjectsManager,
             IStatController statController,
             ITimeController timeController)
@@ -35,19 +35,18 @@ namespace HighLow.Scripts.Views.GameplayPanel
         protected override void OnMediatorInitialize()
         {
             base.OnMediatorInitialize();
-         
+
             View.HighButtonClicked += OnHigh;
             View.LowButtonClicked += OnLow;
             View.EqualButtonClicked += OnEqual;
-            
+
             _gameLogicController.GameLost += OnGameLost;
             _gameLogicController.GameWin += OnGameWin;
 
             _statController.Initialize();
-            
+
             _timeController.StartTimer();
             ShowTime();
-            
         }
 
         protected override void OnMediatorDispose()
@@ -68,14 +67,14 @@ namespace HighLow.Scripts.Views.GameplayPanel
         private void OnGameWin()
         {
             _timeController.StopTimer();
-            
+
             _statController.CheckAndSetBestStreak();
-            
+
             _statController.UpdateWins();
-            
+
             _statController.UpdateResponse(5);
-            
-            if(View != null)
+
+            if (View != null)
                 View.Remove(() =>
                 {
                     _interactiveObjectsManager.Instantiate("WinPanel", "PopupsContainer");
@@ -85,13 +84,14 @@ namespace HighLow.Scripts.Views.GameplayPanel
 
         private void OnGameLost()
         {
+            CameraShake.Shake(0.25f, 0.04f);
             _timeController.StopTimer();
-            
+
             _statController.UpdateFailures();
-            
+
             _statController.UpdateResponse(555);
-            
-            if(View!= null)
+
+            if (View != null)
                 View.Remove(() =>
                 {
                     _interactiveObjectsManager.Instantiate("LostPanel", "PopupsContainer");
