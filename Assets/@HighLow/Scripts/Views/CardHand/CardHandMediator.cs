@@ -85,7 +85,6 @@ namespace HighLow.Scripts.Views.CardHand
             });
             
             _gameplayController.InitCards(View.MaxCount);
-            //TODO: Animate cards to their positions one by one
         }
     }
 }

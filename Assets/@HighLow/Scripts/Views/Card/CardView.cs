@@ -17,10 +17,7 @@ namespace HighLow.Scripts.Views.Card
 
         public void TurnCardFrontFace()
         {
-            transform.DORotate(new Vector3(0, 180, 0), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
-            {
-                Debug.Log("Card flipped!");
-            });
+            transform.DORotate(new Vector3(0, 180, 0), 0.5f).SetEase(Ease.InOutSine);
         }
     }
 }

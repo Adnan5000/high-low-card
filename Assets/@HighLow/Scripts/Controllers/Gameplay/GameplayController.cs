@@ -45,7 +45,7 @@ namespace HighLow.Scripts.Controllers.Gameplay
 
             _gamelogicController.SetPreviousCardPriorityValue(
                 _cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex - 1].GetCardId()));
-            Debug.Log("card index: " + _currentCardIndex + " max count: " + _maxCount);
+            //Debug.Log("card index: " + _currentCardIndex + " max count: " + _maxCount);
         }
 
 
@@ -65,7 +65,7 @@ namespace HighLow.Scripts.Controllers.Gameplay
             _gamelogicController.SetPreviousCardPriorityValue(
                 _cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex - 1].GetCardId()));
 
-            Debug.Log("card index: " + _currentCardIndex + " max count: " + _maxCount);
+            //Debug.Log("card index: " + _currentCardIndex + " max count: " + _maxCount);
         }
 
         public void ShowCardClone()
@@ -102,7 +102,7 @@ namespace HighLow.Scripts.Controllers.Gameplay
 
         public string GetCardId()
         {
-            Debug.Log("Card Id: " + _cardViews[_currentCardIndex].GetCardId());
+            //Debug.Log("Card Id: " + _cardViews[_currentCardIndex].GetCardId());
             return _cardViews[_currentCardIndex].GetCardId();
         }
     }

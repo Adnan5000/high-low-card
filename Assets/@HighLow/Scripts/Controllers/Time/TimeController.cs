@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using HighLow.Scripts.Caching;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Stat;
 using UnityEngine;
@@ -60,29 +61,41 @@ namespace HighLow.Scripts.Controllers.Time
                     
                 }
                 
-                Debug.Log("Timer: " + _timer);
                 await Task.Delay(1000);
             }
         }
 
         public void StopTimer()
         {
+            CalculateAverageResponseTime();
+
             if (_isTimerRunning)
             {
                 _isTimerRunning = false;
-                Debug.Log("Timer Stopped. Final value: " + _timer);
             }
         }
         
         public void ResetChoiceTimer()
         {
-            _responseTimes.Add(_choiceTime);
-            _choiceTime = 5f;
+            if (_timer > 0.1f)
+            {
+                AddResponseTime();
+            }
+
+            _choiceTime = DataProvider.Instance.ChoiceTime;
+
+        }
+        
+        private void AddResponseTime()
+        {
+            float tempResponseTime = DataProvider.Instance.ChoiceTime-_choiceTime;
+            if(tempResponseTime<0.1f)
+                tempResponseTime = 0.1f;
+            _responseTimes.Add(tempResponseTime);
         }
         
         public void ResetTimer()
         {
-            CalculateAverageResponseTime();
             _responseTimes.Clear();
             _timer = 0f;
         }

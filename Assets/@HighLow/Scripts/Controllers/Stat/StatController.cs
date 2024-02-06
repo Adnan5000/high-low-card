@@ -21,7 +21,6 @@ namespace HighLow.Scripts.Controllers.Stat
         
         public void Initialize()
         {
-            Debug.Log("Stat controller initialized");
             LoadData();
         }
         
@@ -67,7 +66,7 @@ namespace HighLow.Scripts.Controllers.Stat
             SaveData();
         }
         
-        private void UpdateBestStreak(int value)
+        private void UpdateBestStreak(float value)
         {
             StatsInfo.BestStreak = value;
             SaveData();
@@ -83,7 +82,7 @@ namespace HighLow.Scripts.Controllers.Stat
         {
             if (_timeController.Timer < GetStats().BestStreak)
             {
-                UpdateBestStreak((int)_timeController.Timer);
+                UpdateBestStreak(_timeController.Timer);
             }
         }
     }

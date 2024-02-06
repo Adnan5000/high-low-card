@@ -101,8 +101,9 @@ namespace HighLow.Scripts.Views.GameplayPanel
             AL_HapticFeedBack.Generate(HapticTypes.HeavyImpact);
             
             CameraShake.Shake(0.25f, 0.04f);
+            
             _timeController.StopTimer();
-
+            
             _statController.UpdateFailures();
 
             _statController.UpdateResponse();

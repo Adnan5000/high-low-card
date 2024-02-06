@@ -25,11 +25,23 @@ namespace HighLow.Scripts.Views.ResultPanels.StatPanel
         
         public void SetAvgTime(float value)
         {
+            if (float.IsNaN(value))
+            {
+                avgTime.text = "N/A";
+                return;
+            }
+
             avgTime.text = value+" sec.";
         }
         
         public void SetBestTime(float value)
         {
+            if (value > 30)
+            {
+                bestTime.text = "N/A";
+                return;
+            }
+            
             bestTime.text = value+" sec.";
         }
     }

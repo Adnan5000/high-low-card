@@ -9,8 +9,10 @@ namespace HighLow.Scripts.Caching
     {
         [SerializeField] private bool showCardsForDebug;
         [SerializeField] private Deck _deck;
+        [SerializeField] private float _choiceTime = 5f;
         public Deck deck => _deck;
         public bool ShowCardsForDebug => showCardsForDebug;
+        public float ChoiceTime => _choiceTime;
         private void Awake()
         {
             InitializeSingleton();
