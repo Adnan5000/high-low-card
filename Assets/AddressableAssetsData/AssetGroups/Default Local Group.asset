@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 81bd45ecbc4a45a4bbfc1ba90817d073
   m_SerializeEntries:
-  - m_GUID: 586872d73e133aa49b7128dd96a56300
-    m_Address: MenuPanel
+  - m_GUID: 3946dd753332171468a7572bdd457256
+    m_Address: StatPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: f306720e628f6644892d8dfcd292182d
@@ -29,16 +29,16 @@ MonoBehaviour:
     m_Address: CardHand
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: fe3f2e60f559d6c40a369c499e0fcf67
-    m_Address: WinPanel
+  - m_GUID: 586872d73e133aa49b7128dd96a56300
+    m_Address: MenuPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: af95b4201de1bf343880c8dc40da9e67
     m_Address: LostPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3946dd753332171468a7572bdd457256
-    m_Address: StatPanel
+  - m_GUID: fe3f2e60f559d6c40a369c499e0fcf67
+    m_Address: WinPanel
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
