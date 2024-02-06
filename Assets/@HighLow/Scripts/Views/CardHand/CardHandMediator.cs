@@ -1,4 +1,5 @@
 ﻿using Arch.InteractiveObjectsSpawnerService;
+using Arch.SoundManager;
 using Arch.Views.Mediation;
 using HighLow.Scripts.Caching;
 using HighLow.Scripts.Controllers.CardPriority;
@@ -16,6 +17,7 @@ namespace HighLow.Scripts.Views.CardHand
         private IGameplayController _gameplayController;
         private ICardPriorityController _cardPriorityController;
         private IGameLogicController _gameLogicController;
+        [Inject] private ISoundManager _soundManager;
 
         [Inject]
         private void Init(
@@ -76,6 +78,11 @@ namespace HighLow.Scripts.Views.CardHand
                     card.transform.Rotate(0, 180, 0);
                 }
             }
+            
+            _soundManager.PlayAudioClip(new AudioClipManagerModel()
+            {
+                ClipName = "CardFlip"
+            });
             
             _gameplayController.InitCards(View.MaxCount);
             //TODO: Animate cards to their positions one by one

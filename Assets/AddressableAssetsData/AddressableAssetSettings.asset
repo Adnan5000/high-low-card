@@ -43,6 +43,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: e9cf7589370236345b9da020de017e8b, type: 2}
   - {fileID: 11400000, guid: 9c9bf39dd179a4f468682ca38692019e, type: 2}
+  - {fileID: 11400000, guid: 4d61c0bf056ff2c41aba527cfec8bcd5, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -84,6 +85,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - SFX
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 33b5f6bb8f76b904a96e6de4fa368761, type: 2}

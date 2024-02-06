@@ -1,8 +1,10 @@
 ﻿using System;
+using Arch.SoundManager;
 using Arch.Views.Mediation;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Zenject;
 
 namespace HighLow.Scripts.Views.ResultPanels.LostPanel
 {
@@ -14,6 +16,8 @@ namespace HighLow.Scripts.Views.ResultPanels.LostPanel
         [Header("Buttons")]
         [SerializeField] private Button btnPlayAgain;
 
+        [Inject] private ISoundManager _soundManager;
+        
         private void Start()
         {
             btnPlayAgain.onClick.AddListener(ClickToPlay);
@@ -21,6 +25,11 @@ namespace HighLow.Scripts.Views.ResultPanels.LostPanel
 
         private void ClickToPlay()
         {
+            _soundManager.PlayAudioClip(new AudioClipManagerModel()
+            {
+                ClipName = "Click"
+            });
+            
             PlayAgainButtonClicked?.Invoke();
         }
     }

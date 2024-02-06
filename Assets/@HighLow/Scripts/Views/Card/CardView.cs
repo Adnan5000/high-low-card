@@ -1,13 +1,15 @@
-﻿using Arch.Views.Mediation;
+﻿using Arch.SoundManager;
+using Arch.Views.Mediation;
 using DG.Tweening;
 using UnityEngine;
+using Zenject;
 
 namespace HighLow.Scripts.Views.Card
 {
-    public class CardView: View, ICardView
+    public class CardView : View, ICardView
     {
         [SerializeField] private string cardId;
-        
+
         public string GetCardId()
         {
             return cardId;

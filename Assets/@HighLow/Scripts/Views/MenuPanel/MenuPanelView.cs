@@ -1,7 +1,9 @@
 ﻿using System;
+using Arch.SoundManager;
 using Arch.Views.Mediation;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace HighLow.Scripts.Views.MenuPanel
 {
@@ -13,6 +15,8 @@ namespace HighLow.Scripts.Views.MenuPanel
         [Header("Buttons")]
         [SerializeField] private Button btnPlay;
         [SerializeField] private Button btnReset;
+        
+        [Inject] private ISoundManager _soundManager;
 
         private void Start()
         {
@@ -22,11 +26,21 @@ namespace HighLow.Scripts.Views.MenuPanel
 
         private void ClickToReset()
         {
+            _soundManager.PlayAudioClip(new AudioClipManagerModel()
+            {
+                ClipName = "Click"
+            });
+            
             ResetButtonClicked?.Invoke();
         }
 
         private void ClickToPlay()
         {
+            _soundManager.PlayAudioClip(new AudioClipManagerModel()
+            {
+                ClipName = "Click"
+            });
+            
             PlayButtonClicked?.Invoke();
         }
     }

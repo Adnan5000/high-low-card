@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: SFX
+  m_EditorClassIdentifier: 
+  m_GroupName: SFX
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 32b0e882d8598ef42b9d98a9fca5434d
+  m_SerializeEntries:
+  - m_GUID: b8f8b17c120bc114d878964e1b4792dc
+    m_Address: Assets/@HighLow/Sounds/ui-click-43196.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: fdfe5f6ef4df575409664de6739c75ab
+    m_Address: Assets/@HighLow/Sounds/book_page-45210.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: 0de0812f521c3644285845e654b1448c
+    m_Address: Assets/@HighLow/Sounds/negative_beeps-6008.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: b6b3124deabd318458e9ebfbb0aa1200
+    m_Address: Assets/@HighLow/Sounds/flipcard-91468.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: 70136cc2563371941901733cb9349014
+    m_Address: Assets/@HighLow/Sounds/whoosh-6316.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: 7764547ad98a9444da6ca2dcf9228660
+    m_Address: Assets/@HighLow/Sounds/lclick-13694.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: b13252008c8a2ac4899d1b298be6c3d7
+    m_Address: Assets/@HighLow/Sounds/success-1-6297.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: c8d368f36b1931e4694067657b403ba3
+    m_Address: Assets/@HighLow/Sounds/rclick-13693.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  - m_GUID: a5d2bc96c1bb468478a8e00b3f2cb6e0
+    m_Address: Assets/@HighLow/Sounds/click-21156.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SFX
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e3a317383c31a5149a98611323d4c07b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ae16ff59ac893d248a497dad310de9ef, type: 2}
+    - {fileID: 11400000, guid: 4a41356e077cdb143b4de319d295ff74, type: 2}

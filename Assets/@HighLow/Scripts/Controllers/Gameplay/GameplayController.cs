@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Arch.SoundManager;
 using HighLow.Scripts.Controllers.CardPriority;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Time;
@@ -10,7 +11,7 @@ using Zenject;
 
 namespace HighLow.Scripts.Controllers.Gameplay
 {
-    public class GameplayController: IGameplayController
+    public class GameplayController : IGameplayController
     {
         private ushort _currentCardIndex;
         private ushort _maxCount;
@@ -18,9 +19,10 @@ namespace HighLow.Scripts.Controllers.Gameplay
         private IGameLogicController _gamelogicController;
         private ICardPriorityController _cardPriorityController;
         private ITimeController _timeController;
+        [Inject] private ISoundManager _soundManager;
 
         [Inject]
-        private void Init(IGameLogicController gameLogicController, 
+        private void Init(IGameLogicController gameLogicController,
             ICardPriorityController cardPriorityController,
             ITimeController timeController)
         {
@@ -28,7 +30,7 @@ namespace HighLow.Scripts.Controllers.Gameplay
             _cardPriorityController = cardPriorityController;
             _timeController = timeController;
         }
-        
+
         public List<CardView> CardViews
         {
             get => _cardViews;
@@ -40,38 +42,48 @@ namespace HighLow.Scripts.Controllers.Gameplay
             _cardViews[0].TurnCardFrontFace();
             _currentCardIndex = 1;
             _maxCount = maxCount;
-            
-            _gamelogicController.SetPreviousCardPriorityValue(_cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex-1].GetCardId()));
-            Debug.Log("card index: "+ _currentCardIndex+ " max count: "+ _maxCount);
+
+            _gamelogicController.SetPreviousCardPriorityValue(
+                _cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex - 1].GetCardId()));
+            Debug.Log("card index: " + _currentCardIndex + " max count: " + _maxCount);
         }
 
 
         public void MoveToNextCard()
         {
+            _soundManager.PlayAudioClip(new AudioClipManagerModel()
+            {
+                ClipName = "CardFlip"
+            });
+
             ShowCardClone();
             _timeController.ResetChoiceTimer();
-            
+
             _cardViews[_currentCardIndex].TurnCardFrontFace();
-            
+
             _currentCardIndex++;
-            _gamelogicController.SetPreviousCardPriorityValue(_cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex-1].GetCardId()));
+            _gamelogicController.SetPreviousCardPriorityValue(
+                _cardPriorityController.GetPriorityValue(_cardViews[_currentCardIndex - 1].GetCardId()));
 
-            Debug.Log("card index: "+ _currentCardIndex+ " max count: "+ _maxCount);
-
+            Debug.Log("card index: " + _currentCardIndex + " max count: " + _maxCount);
         }
-        
+
         public void ShowCardClone()
         {
             CardView cardView = _cardViews[_currentCardIndex];
             CardView cardObj = Object.Instantiate(cardView, cardView.transform.position, cardView.transform.rotation);
-            if (DataProvider.Instance.ShowCardsForDebug)
+            if (!DataProvider.Instance.ShowCardsForDebug)
             {
                 cardObj.GetGameObject.gameObject.transform.DORotate(new Vector3(0, 180, 0), 0.25f);
             }
 
-            cardObj.GetGameObject.gameObject.transform.DOScale(new Vector3(4, 4, 4),0.25f);
+            cardObj.GetGameObject.gameObject.transform.DOScale(new Vector3(4, 4, 4), 0.25f);
             cardObj.GetGameObject.gameObject.transform.DOMove(new Vector3(0, 0, -0.05f), 1f).OnComplete(() =>
             {
+                _soundManager.PlayAudioClip(new AudioClipManagerModel()
+                {
+                    ClipName = "CardWoosh"
+                });
                 AL_HapticFeedBack.Generate(HapticTypes.LightImpact);
                 cardObj.GetGameObject.gameObject.transform.DOMove(new Vector3(10, 0, 0), 2f);
             });
@@ -83,15 +95,14 @@ namespace HighLow.Scripts.Controllers.Gameplay
             {
                 ShowCardClone();
                 return true;
-                
             }
 
             return false;
         }
-        
+
         public string GetCardId()
         {
-            Debug.Log("Card Id: "+ _cardViews[_currentCardIndex].GetCardId());
+            Debug.Log("Card Id: " + _cardViews[_currentCardIndex].GetCardId());
             return _cardViews[_currentCardIndex].GetCardId();
         }
     }

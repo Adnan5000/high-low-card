@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Arch.InteractiveObjectsSpawnerService;
+using Arch.SoundManager;
 using Arch.Views.Mediation;
 using HighLow.Scripts.Common;
 using HighLow.Scripts.Controllers.GameLogic;
@@ -17,6 +18,7 @@ namespace HighLow.Scripts.Views.GameplayPanel
         private IInteractiveObjectsManager _interactiveObjectsManager;
         private IStatController _statController;
         private ITimeController _timeController;
+        [Inject] private ISoundManager _soundManager;
 
         [Inject]
         private void Init(IGameLogicController gameLogicController,
@@ -66,6 +68,11 @@ namespace HighLow.Scripts.Views.GameplayPanel
 
         private void OnGameWin()
         {
+            _soundManager.PlayAudioClip(new AudioClipManagerModel()
+            {
+                ClipName = "GameWin"
+            });
+            
             AL_HapticFeedBack.Generate(HapticTypes.HeavyImpact);
             
             _timeController.StopTimer();
@@ -86,6 +93,11 @@ namespace HighLow.Scripts.Views.GameplayPanel
 
         private void OnGameLost()
         {
+            _soundManager.PlayAudioClip(new AudioClipManagerModel()
+            {
+                ClipName = "GameFail"
+            });
+            
             AL_HapticFeedBack.Generate(HapticTypes.HeavyImpact);
             
             CameraShake.Shake(0.25f, 0.04f);
