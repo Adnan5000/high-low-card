@@ -26,6 +26,7 @@ namespace HighLow.Scripts.Views.MenuPanel
 
         private void ClickToReset()
         {
+            AL_HapticFeedBack.Generate(HapticTypes.LightImpact);
             _soundManager.PlayAudioClip(new AudioClipManagerModel()
             {
                 ClipName = "Click"
@@ -36,6 +37,7 @@ namespace HighLow.Scripts.Views.MenuPanel
 
         private void ClickToPlay()
         {
+            AL_HapticFeedBack.Generate(HapticTypes.LightImpact);
             _soundManager.PlayAudioClip(new AudioClipManagerModel()
             {
                 ClipName = "Click"

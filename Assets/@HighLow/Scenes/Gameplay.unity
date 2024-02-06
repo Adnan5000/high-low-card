@@ -697,6 +697,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 5196034004391033786, guid: 586872d73e133aa49b7128dd96a56300,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5196034004391033787, guid: 586872d73e133aa49b7128dd96a56300,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1134,8 +1139,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508004662}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3954274, y: 0.28514004, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.39538574, y: 0.28515625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1154,7 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b11f0deef860524596473f235d80bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showCardsForDebug: 1
+  showCardsForDebug: 0
   _deck:
     counter: 0
     cards:
