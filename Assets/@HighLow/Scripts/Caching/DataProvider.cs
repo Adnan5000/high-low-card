@@ -7,8 +7,10 @@ namespace HighLow.Scripts.Caching
 {
     public class DataProvider : MonoSingleton<DataProvider>
     {
+        [SerializeField] private bool showCardsForDebug;
         [SerializeField] private Deck _deck;
         public Deck deck => _deck;
+        public bool ShowCardsForDebug => showCardsForDebug;
         private void Awake()
         {
             InitializeSingleton();

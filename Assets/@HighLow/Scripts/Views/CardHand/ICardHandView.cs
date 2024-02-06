@@ -8,7 +8,6 @@ namespace HighLow.Scripts.Views.CardHand
 {
     public interface ICardHandView: IView
     {
-        public bool ShowCardsForDebug { get; }
         public Action HandOutCards { get; set; }
         public ushort MaxCount { get; }
         public List<Transform> CardPositions { get; }

@@ -4,7 +4,7 @@ using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Time;
 using HighLow.Scripts.Views.Card;
 using DG.Tweening;
-using UnityEditor;
+using HighLow.Scripts.Caching;
 using UnityEngine;
 using Zenject;
 
@@ -64,19 +64,28 @@ namespace HighLow.Scripts.Controllers.Gameplay
         {
             CardView cardView = _cardViews[_currentCardIndex];
             CardView cardObj = Object.Instantiate(cardView, cardView.transform.position, cardView.transform.rotation);
-            cardObj.GetGameObject.gameObject.transform.DORotate(new Vector3(0, 180, 0),0.25f);
+            if (DataProvider.Instance.ShowCardsForDebug)
+            {
+                cardObj.GetGameObject.gameObject.transform.DORotate(new Vector3(0, 180, 0), 0.25f);
+            }
+
             cardObj.GetGameObject.gameObject.transform.DOScale(new Vector3(4, 4, 4),0.25f);
             cardObj.GetGameObject.gameObject.transform.DOMove(new Vector3(0, 0, -0.05f), 1f).OnComplete(() =>
             {
                 cardObj.GetGameObject.gameObject.transform.DOMove(new Vector3(10, 0, 0), 2f);
             });
-            
-            
         }
 
         public bool IsFinalCard()
         {
-            return _currentCardIndex == _maxCount - 1;
+            if (_currentCardIndex == _maxCount - 1)
+            {
+                ShowCardClone();
+                return true;
+                
+            }
+
+            return false;
         }
         
         public string GetCardId()

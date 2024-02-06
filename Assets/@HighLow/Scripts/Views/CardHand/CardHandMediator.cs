@@ -71,7 +71,7 @@ namespace HighLow.Scripts.Views.CardHand
                 card.transform.SetParent(View.CardPositions[i]);
                 _gameplayController.CardViews.Add(card.GetComponent<CardView>());
 
-                if (View.ShowCardsForDebug)
+                if (DataProvider.Instance.ShowCardsForDebug)
                 {
                     card.transform.Rotate(0, 180, 0);
                 }

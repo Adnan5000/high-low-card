@@ -1,5 +1,4 @@
-﻿using HighLow.Scripts.Views.Installers;
-using Zenject;
+﻿using Zenject;
 
 namespace HighLow.Scripts.Controllers.Gameplay
 {

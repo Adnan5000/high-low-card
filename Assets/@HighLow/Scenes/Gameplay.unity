@@ -1106,6 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b11f0deef860524596473f235d80bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showCardsForDebug: 1
   _deck:
     counter: 0
     cards:

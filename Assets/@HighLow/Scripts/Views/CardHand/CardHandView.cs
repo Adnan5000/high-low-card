@@ -10,8 +10,6 @@ namespace HighLow.Scripts.Views.CardHand
     [System.Serializable]
     public class CardHandView: View, ICardHandView
     {
-        [SerializeField] private bool showCardsForDebug;
-        public bool ShowCardsForDebug => showCardsForDebug;
         public Action HandOutCards { get; set; }
         
         [SerializeField] private ushort maxCount;
