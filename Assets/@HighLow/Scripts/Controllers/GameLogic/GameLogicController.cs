@@ -31,6 +31,8 @@ namespace HighLow.Scripts.Controllers.GameLogic
         
         public void CheckMove(string cardId, EnumsHandler.Moves moveType)
         {
+            AL_HapticFeedBack.Generate(HapticTypes.LightImpact);
+            
             var currentCardPriorityValue = _cardPriorityController.GetPriorityValue(cardId);
             Debug.Log("Card Value: "+ currentCardPriorityValue+ " Previous Card Value: "+ _previousCardPriorityValue+ " Move Type: "+ moveType);
             switch (moveType)

@@ -66,6 +66,8 @@ namespace HighLow.Scripts.Views.GameplayPanel
 
         private void OnGameWin()
         {
+            AL_HapticFeedBack.Generate(HapticTypes.HeavyImpact);
+            
             _timeController.StopTimer();
 
             _statController.CheckAndSetBestStreak();
@@ -84,6 +86,8 @@ namespace HighLow.Scripts.Views.GameplayPanel
 
         private void OnGameLost()
         {
+            AL_HapticFeedBack.Generate(HapticTypes.HeavyImpact);
+            
             CameraShake.Shake(0.25f, 0.04f);
             _timeController.StopTimer();
 

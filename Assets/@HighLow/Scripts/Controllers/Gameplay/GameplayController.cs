@@ -72,6 +72,7 @@ namespace HighLow.Scripts.Controllers.Gameplay
             cardObj.GetGameObject.gameObject.transform.DOScale(new Vector3(4, 4, 4),0.25f);
             cardObj.GetGameObject.gameObject.transform.DOMove(new Vector3(0, 0, -0.05f), 1f).OnComplete(() =>
             {
+                AL_HapticFeedBack.Generate(HapticTypes.LightImpact);
                 cardObj.GetGameObject.gameObject.transform.DOMove(new Vector3(10, 0, 0), 2f);
             });
         }
