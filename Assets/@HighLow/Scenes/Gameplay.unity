@@ -992,6 +992,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 721483068}
     m_Modifications:
+    - target: {fileID: 60365585187695324, guid: 586872d73e133aa49b7128dd96a56300,
+        type: 3}
+      propertyPath: m_text
+      value: RESET DATA
+      objectReference: {fileID: 0}
+    - target: {fileID: 60365585187695324, guid: 586872d73e133aa49b7128dd96a56300,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 60365585187695324, guid: 586872d73e133aa49b7128dd96a56300,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5141876909096135264, guid: 586872d73e133aa49b7128dd96a56300,
         type: 3}
       propertyPath: m_Name
@@ -1237,11 +1252,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: dc727d4df72ecf648bab5764dea80e23, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

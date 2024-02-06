@@ -69,7 +69,7 @@ MonoBehaviour:
         type: 2}
       MaxSimultaneouslyCalls: 10
     - Reference: {fileID: 8300000, guid: 0de0812f521c3644285845e654b1448c, type: 3}
-      Volume: 1
+      Volume: 0.2
       OutputAudioMixerGroup: {fileID: -5156091340773076331, guid: a4552bf1443939d4ca8377248b842e75,
         type: 2}
       MaxSimultaneouslyCalls: 10
