@@ -4,6 +4,7 @@ namespace HighLow.Scripts.Controllers.Time
 {
     public interface ITimeController
     {
+        public float AverageResponseTime { get; }
         public float Timer { get; }
         public string ChoiceTimeText { get; }
         public Task StartTimer();

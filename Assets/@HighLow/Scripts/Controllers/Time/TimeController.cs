@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using HighLow.Scripts.Controllers.GameLogic;
 using HighLow.Scripts.Controllers.Stat;
@@ -14,7 +15,11 @@ namespace HighLow.Scripts.Controllers.Time
         private float _choiceTime = 5f;
         private string _choiceTimeText;
         
+        private float _averageResponseTime;
+        private List<float> _responseTimes = new List<float>();
+
         public float Timer => _timer;
+        public float AverageResponseTime => _averageResponseTime;
         
         public string ChoiceTimeText => _choiceTimeText;
         
@@ -71,12 +76,26 @@ namespace HighLow.Scripts.Controllers.Time
         
         public void ResetChoiceTimer()
         {
+            _responseTimes.Add(_choiceTime);
             _choiceTime = 5f;
         }
         
         public void ResetTimer()
         {
+            CalculateAverageResponseTime();
+            _responseTimes.Clear();
             _timer = 0f;
+        }
+        
+        public void CalculateAverageResponseTime()
+        {
+            float sum = 0;
+            foreach (var responseTime in _responseTimes)
+            {
+                sum += responseTime;
+            }
+            _averageResponseTime = sum / _responseTimes.Count;
+            _averageResponseTime = (float)Math.Round(_averageResponseTime, 2);
         }
         
         private string FormatTime(float seconds)

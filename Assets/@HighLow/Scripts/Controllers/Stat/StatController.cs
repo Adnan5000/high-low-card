@@ -61,9 +61,9 @@ namespace HighLow.Scripts.Controllers.Stat
             SaveData();
         }
         
-        public void UpdateResponse(int value)
+        public void UpdateResponse()
         {
-            StatsInfo.AverageResponse = value;
+            StatsInfo.AverageResponse = _timeController.AverageResponseTime;
             SaveData();
         }
         
@@ -93,8 +93,8 @@ namespace HighLow.Scripts.Controllers.Stat
     {
         public int TotalWins = 0;
         public int TotalFailures = 0;
-        public int AverageResponse = 0;
-        public int BestStreak = 999;
+        public float AverageResponse = 0;
+        public float BestStreak = 999;
     }
     
     public struct StatsWrapper

@@ -72,7 +72,7 @@ namespace HighLow.Scripts.Views.GameplayPanel
 
             _statController.UpdateWins();
 
-            _statController.UpdateResponse(5);
+            _statController.UpdateResponse();
 
             if (View != null)
                 View.Remove(() =>
@@ -89,7 +89,7 @@ namespace HighLow.Scripts.Views.GameplayPanel
 
             _statController.UpdateFailures();
 
-            _statController.UpdateResponse(555);
+            _statController.UpdateResponse();
 
             if (View != null)
                 View.Remove(() =>
