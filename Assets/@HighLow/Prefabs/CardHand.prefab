@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFadeAble: 1
   fadeDuration: 0.5
-  showCardsForDebug: 1
+  showCardsForDebug: 0
   maxCount: 7
   cardPositions:
   - {fileID: 4563606904542463476}
